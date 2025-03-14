@@ -1,0 +1,356 @@
+/* Global Styles */
+body {
+  margin: 5px;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a); /* Gradient background */
+  color: #e0e0e0; /* Light text color */
+}
+
+a {
+  text-decoration: none;
+  color: #e0e0e0; /* Link color */
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth color transition */
+}
+
+a:hover {
+  color: #fff; /* Hover effect for links */
+  text-shadow: 0 0 5px #fff, 0 0 15px rgba(255, 255, 255, 0.7); /* Light text shadow for effect */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Space between logo and nav links */
+  align-items: center;
+  padding: 15px 10px; /* Padding for navbar */
+  background: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
+  position: fixed; /* Fixed position */
+  width: 100%; /* Full width */
+  height: 60px;
+  top: 0; /* Stick to top */
+  z-index: 100; /* Layer above other content */
+  backdrop-filter: blur(15px); /* Glass effect */
+}
+
+.logo-container {
+  display: flex; /* Align logo and name side by side */
+  align-items: center;
+}
+
+/* Keyframes for spinning animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg); /* Start at 0 degrees */
+  }
+  to {
+    transform: rotate(360deg); /* End at 360 degrees */
+  }
+}
+
+/* Logo Styling */
+.logo {
+  width: 50px; /* Logo size */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Circular logo */
+  margin-right: 20px; /* Space between logo and brand name */
+  animation: spin 10s linear infinite; /* Apply spin animation */
+}
+
+.brand-name {
+  position: relative; /* Position relative for pseudo-element */
+  font-size: 1.1rem; /* Font size for brand name */
+  font-weight: bold; /* Bold text */
+  color: #fff; /* Brand name color */
+  overflow: hidden; /* Hide overflow for the underline effect */
+}
+
+/* Create the underline effect */
+.brand-name::after {
+  content: ''; /* Required for pseudo-element */
+  position: absolute; /* Positioning the underline */
+  left: 50%; /* Start from the middle */
+  bottom: 0; /* Align with the bottom */
+  width: 0; /* Initial width of the underline */
+  height: 2px; /* Thickness of the underline */
+  background: rgba(255, 255, 255, 0.8); /* Color of the underline */
+  transition: width 0.4s ease, left 0.4s ease; /* Animation for width and position */
+  animation: underline-animation 2s infinite; /* Continuous animation */
+}
+
+/* Keyframes for the underline animation */
+@keyframes underline-animation {
+  0% {
+    width: 0;
+    left: 50%; /* Start from the middle */
+  }
+  50% {
+    width: 100%; /* Expand to full width */
+    left: 0; /* Align to the left */
+  }
+  100% {
+    width: 0; /* Contract back to zero */
+    left: 50%; /* Reset to the middle */
+  }
+}
+
+
+.nav-links {
+  display: flex; /* Horizontal alignment of nav items */
+  gap: 5px; /* Space between links */
+  padding: 0; /* Remove any default padding */
+  justify-content: space-evenly;
+  margin: 35px;
+}
+
+/* Navigation Links */
+.nav-item {
+  display: flex;
+  align-items: center; /* Center icons vertically */
+  font-size: 1.2rem; /* Increase font size for better readability */
+  color: #e0e0e0; /* Default color */
+  transition: color 0.3s ease, text-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+  padding: 5px 1px; /* Padding for clickable area */
+  border-radius: 5px; /* Rounded corners for hover effect */
+}
+
+/* Hover effects for nav links */
+.nav-item:hover,
+.nav-item:focus {
+  color: #fff; /* Change text color on hover */
+  background-color: rgba(0, 150, 255, 0.2); /* Light background on hover */
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff; /* Light text shadow for effect */
+}
+
+/* Active link */
+.nav-item.active {
+  color: #fff; /* Active text color */
+  background-color: rgba(0, 150, 255, 0.3); /* Highlighted background for active link */
+}
+
+/* Icon Styling */
+/* Icon Styling with Animation */
+.nav-icon {
+  width: 30px; /* Icon size */
+  height: auto; /* Maintain aspect ratio */
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
+}
+
+/* Add neon effect */
+.nav-icon {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)) 
+          drop-shadow(0 0 10px rgba(255, 255, 255, 0.6)) 
+          drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)); /* White glow effect */
+}
+
+/* Hover effects for nav icons */
+.nav-item:hover .nav-icon {
+  transform: scale(1.2) rotate(15deg); /* Scale up and rotate on hover */
+  opacity: 0.9; /* Slightly fade out for effect */
+  filter: drop-shadow(0 0 10px rgba(0, 150, 255, 1)) 
+          drop-shadow(0 0 15px rgba(0, 150, 255, 0.6)); /* Change glow color on hover */
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.hero-image-container {
+  width: 100%;
+  height: 60vh; /* Hero image height */
+}
+
+.hero-image {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  object-fit: cover; /* Cover the container */
+  filter: grayscale(100%) brightness(0.3); /* Black-and-white effect */
+  border-radius: 20px; /* Rounded corners */
+  transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease; /* Transition for effects */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+  position: relative; /* Position for overlay */
+}
+
+/* Add overlay effect on hover */
+.hero-image:hover {
+  transform: scale(1.05); /* Scale up on hover */
+  filter: grayscale(50%) brightness(0.5); /* Remove some grayscale and adjust brightness */
+}
+
+/* Overlay */
+.hero-image::after {
+  content: ""; /* Empty content for the overlay */
+  position: absolute; /* Absolute positioning */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+  border-radius: 20px; /* Match the border radius of the image */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.5s ease; /* Smooth transition for the overlay */
+}
+
+.hero-image:hover::after {
+  opacity: 1; /* Show overlay on hover */
+}
+
+
+.hero-text {
+  text-align: justify; /* Center text */
+  margin-top: 20px; /* Space below image */
+  color: #fff; /* Text color */
+  padding: 20px;
+  text-shadow: 0 0 8px #fff, 0 0 10px rgba(255, 255, 255, 0.7); /* Text shadow for effect */
+}
+
+.hero-text h2 {
+  font-size: 3rem; /* Large heading */
+}
+
+.hero-text p {
+  font-size: 1.3rem; /* Subheading size */
+  margin-top: 10px; /* Space above paragraph */
+}
+
+/* Main Content */
+.content {
+  padding: 40px 20px; /* Padding for main content */
+  background-color: #141414; /* Background color for content */
+}
+
+.dynamic-content {
+  margin-bottom: 40px; /* Space below section */
+}
+
+.dynamic-content h2 {
+  margin-bottom: 20px; /* Space below section title */
+  font-size: 2rem; /* Section title size */
+  text-align: center; /* Center title */
+  color: #fff; /* Title color */
+}
+
+.grid {
+  display: grid; /* Grid layout for projects */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between grid items */
+}
+
+.grid article {
+  background-color: #1a1a1a; /* Card background */
+  padding: 20px; /* Inner padding */
+  border-radius: 8px; /* Rounded corners */
+  text-align: center; /* Center text */
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2); /* Shadow effect for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effects */
+}
+
+.grid article:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.5); /* Stronger shadow on hover */
+}
+
+/* Media Section */
+.media {
+  margin-bottom: 40px; /* Space below section */
+  text-align: center;
+
+}
+
+.media h2 {
+  text-align: center; /* Center title */
+  color: #fff; /* Title color */
+}
+
+.media video {
+  width: 90%; /* Full width for videos */
+  border: 2px solid #e0e0e0; /* Video border */
+  border-radius: 10px; /* Rounded corners */
+  margin-top: 20px; /* Space above video */
+}
+
+/* Photo Showcase */
+.picture-section {
+  margin-bottom: 40px; /* Space below section */
+}
+
+.picture-section h2 {
+  text-align: center; /* Center title */
+  color: #fff; /* Title color */
+}
+
+.picture-section .images {
+  display: grid; /* Grid layout for images */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 15px; /* Space between images */
+}
+
+.picture-section img {
+  width: 100%; /* Full width for images */
+  border-radius: 10px; /* Rounded corners */
+  filter: grayscale(100%); /* Grayscale effect */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Transition effects */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Shadow for images */
+}
+
+.picture-section img:hover {
+  transform: scale(1.05); /* Scale up on hover */
+  filter: grayscale(0%); /* Remove grayscale on hover */
+}
+
+/* Footer */
+footer {
+  text-align: center; /* Center text */
+  padding: 15px; /* Padding for footer */
+  background-color: #000; /* Footer background */
+  color: #e0e0e0; /* Footer text color */
+  border-top: 2px solid #e0e0e0; /* Border above footer */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row; /* Stack items vertically on small screens */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .nav-links {
+    flex-direction: row; /* Stack nav links vertically */
+    gap: 10px; /* Reduce gap for mobile */
+    width: 100%; /* Full width for nav links */
+    margin-top: 10px; /* Space below the logo */
+  }
+
+  .nav-item {
+    width: 100%; /* Full width for nav items */
+    text-align: center; /* Center text */
+  }
+
+  .hero-text h2 {
+    font-size: 2rem; /* Adjust heading size for smaller screens */
+  }
+
+  .hero-text p {
+    font-size: 1rem; /* Adjust paragraph size for smaller screens */
+  }
+
+  .dynamic-content h2, .media h2, .picture-section h2 {
+    font-size: 1.5rem; /* Adjust section titles */
+  }
+
+  .grid article {
+    padding: 15px; /* Reduce padding in articles for mobile */
+  }
+
+}
